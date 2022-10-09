@@ -1,9 +1,13 @@
+import { CardFlipper, createCardsFromTechs } from "./game.js"
+
 const FRONT = "card_front"
 const BACK = "card_back"
 const CARD = "card"
 
-game.createCardsFromTechs()
-initializeBoard(game.cards)
+{
+    const cards = createCardsFromTechs()
+    initializeBoard(cards)
+}
 
 function initializeBoard(cards) {
     const gameBoard = document.getElementById("gameBoard")
@@ -18,7 +22,7 @@ function initializeBoard(cards) {
         cardElement.addEventListener("click", flipCard)
 
         gameBoard.appendChild(cardElement)
-    });
+    })
 }
 
 function createCardContent(cardObject, cardElement) {
@@ -33,33 +37,36 @@ function createCardFace(face, cardObject, cardElement) {
     cardElement.appendChild(cardElementFace)
 }
 
-function flipCard() {
-    if (game.setCard(this.id)) {
-        this.classList.add("flip")
-        if (game.checkNull()) return
+const cardFlipper = new CardFlipper()
 
-        if (game.checkMatch()) {
-            if (!game.checkGameOver()) game.clearCards()
-            else gameOver()
-        }
-        else {
-            const firstCardView = document.getElementById(game.firstCard.id)
-            const secondCardView = document.getElementById(game.secondCard.id)
+function flipCard() {
+    if (!cardFlipper.isCardFlipped(this.id)) {
+        this.classList.add("flip")
+
+        if (cardFlipper.checkNull()) return
+
+        const [firstCard, secondCard] = cardFlipper.getSelectedCards()
+
+        if (firstCard.icon == secondCard.icon) {
+            if (cardFlipper.checkGameFinish()) gameFinish()
+            else cardFlipper.clearCards()
+        } else {
+            const firstCardView = document.getElementById(firstCard.id)
+            const secondCardView = document.getElementById(secondCard.id)
 
             setTimeout(() => {
                 firstCardView.classList.remove("flip")
                 secondCardView.classList.remove("flip")
-                game.unflip()
-                game.clearCards()
-            }, 1000);
+                cardFlipper.unflip()
+                cardFlipper.clearCards()
+            }, 1000)
         }
     }
 }
 
-function gameOver() {
-    document.getElementById("gameOver").style.display = "flex"
+function gameFinish() {
+    document.getElementById("gameFinish").style.display = "flex"
+    document.getElementById("restart").addEventListener("click", restart)
 }
 
-function restart() {
-    location.reload()
-}
+function restart() { location.reload() }

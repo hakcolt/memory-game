@@ -4,6 +4,7 @@ const FRONT = "card_front"
 const BACK = "card_back"
 const CARD = "card"
 let cardFlipper = null
+let timer = null
 
 init()
 
@@ -17,7 +18,7 @@ function initializeBoard(cards) {
     updateMoveAndScore([0, 0])
     
     cardFlipper = new CardFlipper()
-    setInterval(timer, 1000)
+    timer = setInterval(timer, 1000)
 
     const gameBoard = document.getElementById("gameBoard")
     gameBoard.innerHTML = ""
@@ -116,5 +117,6 @@ function gameFinish() {
 function restart() { 
     const gameFinishView = document.getElementById("gameFinish")
     gameFinishView.style.display = "none"
+    clearInterval(timer)
     init()
  }

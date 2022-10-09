@@ -18,7 +18,7 @@ function initializeBoard(cards) {
     updateMoveAndScore([0, 0])
     
     cardFlipper = new CardFlipper()
-    timer = setInterval(timer, 1000)
+    timer = setInterval(updateTimer, 1000)
 
     const gameBoard = document.getElementById("gameBoard")
     gameBoard.innerHTML = ""
@@ -43,7 +43,7 @@ function updateMoveAndScore([score, moves]) {
     movesView.innerHTML = moves
 }
 
-function timer() {
+function updateTimer() {
     const timerView = document.getElementById("data").children[2]
     timerView.innerHTML = getTimeFormatted()
 }

@@ -33,8 +33,21 @@ function shuffleCards() {
 }
 
 export class CardFlipper {
+    #timer = 0
     #firstCard = null
     #secondCard = null
+    #score = 0
+    #moves = 0
+
+    static DataType = class {
+        static MOVES = "moves"
+        static SCORE = "score"
+        static BOTH = "both"
+    }
+
+    getSeconds() {
+        return ++this.#timer
+    }
 
     isCardFlipped(id) {
         let card = cards.filter(cardTemp => cardTemp.id == id)[0]
@@ -45,7 +58,7 @@ export class CardFlipper {
         return false
     }
 
-    checkNull() { return  !this.#firstCard|| !this.#secondCard }
+    checkNull() { return !this.#firstCard || !this.#secondCard }
 
     getSelectedCards() {
         return [this.#firstCard, this.#secondCard]
@@ -63,5 +76,12 @@ export class CardFlipper {
     unflip() {
         this.#firstCard.flipped = false
         this.#secondCard.flipped = false
+    }
+
+    increaseMovesOrScore(type) {
+        if (type == CardFlipper.DataType.SCORE) this.#score++
+        if (type == CardFlipper.DataType.MOVES) this.#moves++
+        if (type == CardFlipper.DataType.BOTH) { this.#score++; this.#moves++ }
+        return [this.#score, this.#moves]
     }
 }

@@ -11,15 +11,31 @@
     </head>
 
     <body>
-        <div class="title">
-            <h1>Memory Game</h1>
-            <h4>By Igor Hakcolt</h4>
+        <div class="container">
+            <header class="header">
+                <div class="title">
+                    <h1>Memory Game</h1>
+                    <h4>By Igor Hakcolt</h4>
+                </div>
+
+                <div id="data" class="data">
+                    Score: <span>0</span>
+                    Moves: <span>0</span>
+                    Time: <span>00:00</span>
+                </div>
+            </header>
+
+            <div id="gameBoard"></div>
         </div>
-        <div id="gameBoard"></div>
 
         <div id="gameFinish">
-            <h4>Congratulations, you completed the game!</h4>
-            <button id="restart">Play Again</button>
+            <h2 class="gameFinish-title">You won!</h4>
+                <p class="gameFinish-data">
+                    Score: <span>0</span>,
+                    Moves: <span>0</span>,
+                    Time: <span>00:00</span>
+                </p>
+                <button id="restart">Play Again</button>
         </div>
 
         <script src="scripts/script.js" type="module"></script>

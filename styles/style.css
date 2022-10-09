@@ -8,30 +8,58 @@
 }
 
 body {
-    background-color: #C7CdD3;
     font-family: 'Righteous', sans-serif;
+    background-color: #C7CdD3;
+}
+
+.container {
+    padding: 30px;
+}
+
+.header {
+    position: relative;
+    height: 300px;
+    max-width: 600px;
+    margin: 20px auto;
+    border: black 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
 }
 
 .title {
-    text-align: center;
-    padding: 40px;
 }
 
+.data {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
 
 #gameBoard {
-    margin: auto;
-    max-width: 700px;
+    margin: 50px;
     display: grid;
-    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, auto);
     gap: 20px;
+    justify-content: center;
 }
 
 .card {
-    width: 150px;
+    width: 25vw;
+    height: 25vw;
+    max-width: 150px;
+    max-height: 150px;
     position: relative;
-    height: 150px;
     transform-style: preserve-3d;
     transition: transform 500ms;
+}
+
+img {
+    width: 75%;
+    height: 75%;
 }
 
 .card_front,
@@ -45,7 +73,7 @@ body {
     border-radius: 20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
     backface-visibility: hidden;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .flip {
@@ -69,16 +97,28 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    font-size: 50px;
-    display: flex;
+    display: none;
     justify-content: center;
     text-align: center;
     align-items: center;
     flex-direction: column;
 }
 
-#gameFinish h4 {
-    margin-bottom: 20px;
+.gameFinish-title {
+    font-size: 70px;
+}
+
+.gameFinish-data {
+    font-size: 50px;
+}
+
+.gameFinish-result {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+#gameFinish button {
+    margin-top: 20px;
 }
 
 #restart {
@@ -90,4 +130,10 @@ body {
     border-radius: 10px;
     margin-top: 10px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+    #gameBoard {
+        grid-template-columns: repeat(4, auto);
+    }
 }

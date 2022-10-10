@@ -11,9 +11,18 @@
     </head>
 
     <body>
-        <div class="container">
-            <header class="header">
-                <div class="title">
+
+        <div class="presentation any_full-screen">
+            <div>
+                <h1>Memory Game</h1>
+                <h4>By Igor Hakcolt</h4>
+            </div>
+            <button id="presentation__button" class="presentation__button">Start Game</button>
+        </div>
+
+        <div id="content" class="content-container">
+            <header class="presentation presentation_header">
+                <div>
                     <h1>Memory Game</h1>
                     <h4>By Igor Hakcolt</h4>
                 </div>
@@ -25,17 +34,19 @@
                 </div>
             </header>
 
-            <div id="gameBoard"></div>
+            <div class="game-board-container">
+                <div id="game-board" class="game-board"></div>
+            </div>
         </div>
 
-        <div id="gameFinish">
-            <h2 class="gameFinish-title">You won!</h4>
-                <p class="gameFinish-data">
-                    Score: <span>0</span>,
-                    Moves: <span>0</span>,
-                    Time: <span>00:00</span>
-                </p>
-                <button id="restart">Play Again</button>
+        <div id="game-finish" class="game-finish">
+            <h2>You won!</h2>
+            <p class="game-finish__data">
+                Score: <span>0</span>,
+                Moves: <span>0</span>,
+                Time: <span>00:00</span>
+            </p>
+            <button id="restart" class="game-finish__restart">Play Again</button>
         </div>
 
         <script src="scripts/script.js" type="module"></script>

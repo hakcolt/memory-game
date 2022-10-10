@@ -1,5 +1,9 @@
-:root {
-    --accent-color: #101C2C
+.any_full-screen {
+    height: 100vh;
+}
+
+.any_flip {
+    transform: rotateY(180deg);
 }
 
 * {
@@ -9,88 +13,102 @@
 
 body {
     font-family: 'Righteous', sans-serif;
-    background-color: #C7CdD3;
+    background-color: rgb(59, 59, 59);
 }
 
-.container {
-    padding: 30px;
-}
-
-.header {
+.presentation {
+    color: rgb(212, 212, 212);
     position: relative;
-    height: 300px;
-    max-width: 600px;
-    margin: 20px auto;
-    border: black 1px solid;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 100%;
     text-align: center;
     justify-content: center;
 }
 
-.title {
+.presentation_header {
+    background-color: gray;
+    aspect-ratio: 2 / 1;
+    font-size: 10px;
+    border: rgb(212, 212, 212) 1px solid;
+    border-radius: 10px;
+}
+
+.presentation__button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: aliceblue;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.content-container {
+    padding: 30px;
+    max-width: 660px;
+    margin: auto;
+    display: none;
 }
 
 .data {
     position: absolute;
-    bottom: 20px;
+    bottom: 12px;
     left: 20px;
 }
 
-#gameBoard {
-    margin: 50px;
+.game-board-container {
+    margin-top: 20px;
+    background-color: gray;
+    padding: 16px;
+    border-radius: 10px;
+    border: rgb(212, 212, 212) 1px solid;
+}
+
+.game-board {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 20px;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
 }
 
 .card {
-    width: 25vw;
-    height: 25vw;
-    max-width: 150px;
-    max-height: 150px;
+    aspect-ratio: 1/1;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 500ms;
 }
 
-img {
-    width: 75%;
-    height: 75%;
+.card__img {
+    width: 70%;
+    height: 70%;
 }
 
-.card_front,
-.card_back {
+.card__front,
+.card__back {
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    color: rgb(224, 224, 224);
+    border: rgb(212, 212, 212) 1px solid;
+    border-radius: 5px;
     backface-visibility: hidden;
     cursor: pointer;
 }
 
-.flip {
+.card__front {
     transform: rotateY(180deg);
+    background-color: rgb(59, 59, 59);
 }
 
-.card_front {
-    transform: rotateY(180deg);
-    background-color: var(--accent-color);
+.card__back {
+    background-color: darkgray;
 }
 
-.card_back {
-    background-color: #05C3FF;
-    font-size: 30px;
-}
-
-#gameFinish {
+.game-finish {
     position: fixed;
     top: 0;
     width: 100%;
@@ -101,39 +119,32 @@ img {
     justify-content: center;
     text-align: center;
     align-items: center;
+    font-size: 20px;
     flex-direction: column;
 }
 
-.gameFinish-title {
-    font-size: 60px;
-}
-
-.gameFinish-data {
-    font-size: 25px;
-}
-
-.gameFinish-result {
-    margin-top: 10px;
-    font-size: 25px;
-}
-
-#gameFinish button {
-    margin-top: 20px;
-}
-
-#restart {
-    padding: 15px 20px;
-    font-size: 20px;
+.game-finish__restart {
+    padding: 12px 20px;
+    font-size: 15px;
     font-weight: 700;
     background-color: yellow;
     border: none;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
-@media screen and (min-width: 700px) {
-    #gameBoard {
-        grid-template-columns: repeat(4, auto);
+@media (min-width: 640px) {
+    .presentation_header {
+        font-size: 15px;
+    }
+
+    .game-board-container {
+        padding: 25px;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
     }
 }

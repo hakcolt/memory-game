@@ -20,8 +20,12 @@ You can play the game on [page game](https://hakcolt.github.io/memory-game)
 - API and Frameworks:
   - `none`
 
-<hr>
+<br>
+
+> **Warning**: This project is Open Source and allow the users to reuse code for any purpose, so please give credits to @hakcolt
+
+<br>
 
 <p align="right">
-  <b>Copyright (c) 2022 Igor Hakcolt<b>
+  <b>Made with ❤ from Brazil | Copyright (c) 2022 Igor Hakcolt<b>
 </p>
